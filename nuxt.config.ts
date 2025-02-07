@@ -4,9 +4,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-02-07',
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/eslint-module',
     '@pinia/nuxt',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/device',
   ],
   css: ["~/assets/css/index.scss"],
-
 })

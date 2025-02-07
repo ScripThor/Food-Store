@@ -1,32 +1,35 @@
 module.exports = {
     root: true,
-    parser: "vue-eslint-parser",
-    parserOptions: {
-        parser: {
-            ts: "@typescript-eslint/parser"
-        }
-    },
     env: {
+        browser: true,
         node: true,
-        browser: true
     },
     extends: [
-        "plugin:vue/vue3-recommended"
+        '@nuxtjs',
+        'plugin:nuxt/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'prettier',
     ],
-    rules: {
-        "prefer-promise-reject-errors": "off",
-        "vue/no-v-html": "off",
-        "no-trailing-spaces": ["warn"],
-        "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-        "vue/multi-word-component-names": ["error", {
-            ignores: ["error", "Error"]
-        }]
+    parser: '@typescript-eslint/parser', // Парсер для TypeScript
+    parserOptions: {
+        project: './tsconfig.json', // Укажите проект TypeScript
+        ecmaVersion: 2020,
+        sourceType: 'module',
     },
-    ignorePatterns: ['dist', 'node_modules', 'build', 'coverage', 'docs', 'test'],
+    plugins: ['@typescript-eslint'],
     overrides: [
         {
-            files: ["components/**/**/*.vue"],
-            rules: { "vue/multi-word-component-names": "off" }
-        }
-    ]
-}
+            files: ['*.vue'], // Для файлов .vue используем стандартный парсер
+            parser: 'vue-eslint-parser', // Стандартный парсер для Vue
+            parserOptions: {
+                ecmaVersion: 2020,
+                sourceType: 'module',
+            },
+        },
+    ],
+    rules: {
+        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // Разрешаем console в dev-режиме
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // Разрешаем debugger в dev-режиме
+        '@typescript-eslint/no-unused-vars': 'warn', // Предупреждения о неиспользуемых переменных
+    },
+};
