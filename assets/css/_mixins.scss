@@ -1,0 +1,11 @@
+// Переопределяем $breakpoints для библиотеки include-media и пробрасываем её дальше в глобальные импорты
+@forward 'include-media/dist/_include-media.scss' show media with (
+  $breakpoints: (
+    'phone': 320px,
+    'portrait-phone': 475px,
+    'tablet': 768px,
+    'desktop-mini': 1024px,
+    'desktop-mini-height': 600px,
+    'desktop': 1280px,
+  )
+);

@@ -5,7 +5,7 @@ const onScroll = () => {
 </script>
 
 <template>
-  <nuxt-link :to="`/`" class="the-logo" @click.prevent="onScroll">
+  <nuxt-link to="/" class="the-logo" @click.prevent="onScroll">
     <img src="/assets/logo.png" alt="Sushi Stories" />
   </nuxt-link>
 </template>

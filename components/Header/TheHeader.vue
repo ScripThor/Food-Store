@@ -9,3 +9,6 @@ const { isDesktop } = useDevice()
   <the-header-desktop v-if="isDesktop"/>
   <the-header-mobile v-else/>
 </template>
+
+<style lang="scss" scoped>
+</style>
