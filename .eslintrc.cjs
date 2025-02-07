@@ -14,7 +14,6 @@ module.exports = {
         "plugin:vue/vue3-recommended"
     ],
     rules: {
-        "no-trailing-spaces": ["warn"],
         "prefer-promise-reject-errors": "off",
         "vue/no-v-html": "off",
         "no-trailing-spaces": ["warn"],
