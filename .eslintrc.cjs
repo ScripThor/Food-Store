@@ -17,6 +17,9 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['@typescript-eslint'],
+    globals: {
+        useDevice: 'readonly', // Добавляем useDevice как глобальную переменную
+    },
     overrides: [
         {
             files: ['*.vue'], // Для файлов .vue используем стандартный парсер

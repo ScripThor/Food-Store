@@ -1,6 +1,24 @@
 body {
   font-family: var(--primary-font), sans-serif;
   color: var(--primary-text);
+  margin: 0;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  min-height: 20px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  cursor: pointer;
+}
+
+button, select {
+  text-transform: none;
+  user-select: none;
 }
 
 .container {
