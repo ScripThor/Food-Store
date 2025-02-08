@@ -21,6 +21,7 @@ import HeaderCart from "~/components/Header/HeaderCart.vue";
 .header {
   position: sticky;
   top: 0;
+  z-index: 99;
 
   &__container {
     display: flex;
