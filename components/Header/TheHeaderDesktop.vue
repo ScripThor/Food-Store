@@ -22,14 +22,13 @@ import HeaderCart from "~/components/Header/HeaderCart.vue";
   position: sticky;
   top: 0;
 
-
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
     height: 60px;
-    max-width: 1200px;
+    max-width: 1250px;
     padding: 0 15px;
     border-radius: 0 0 25px 25px;
     background-color: var(--secondary-color);
