@@ -4,7 +4,7 @@
 
 <template>
   <div class="banner">
-    <nuxt-img src="/banners/hb.jpg" class="banner__img"/>
+    <nuxt-img src="/banners/slajd-karri.png" class="banner__img"/>
   </div>
 
 </template>
