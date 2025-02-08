@@ -8,21 +8,27 @@ const productsStore = useProductsStore();
 
 onMounted(() => {
   categoriesStore.loadCategories();
-  productsStore.loadProducts(); // Загружаем продукты
+  productsStore.loadProducts();
 });
 
 const categories = computed(() => categoriesStore.categories);
 
-// Функция для получения продуктов по категории
 const getProductsByCategory = (categorySlug: string) => {
   return productsStore.getProductsByCategory(categorySlug);
 };
+
+const filteredCategories = computed(() => {
+  return categories.value.filter((category) => {
+    const products = getProductsByCategory(category.slug);
+    return products.length > 0; // Оставляем только категории с товарами
+  });
+});
 </script>
 
 <template>
   <div class="category">
     <div
-        v-for="category in categories"
+        v-for="category in filteredCategories"
         :id="category.slug"
         :key="category.slug"
         class="category__block"
