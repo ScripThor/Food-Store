@@ -32,7 +32,8 @@ import HeaderCart from "~/components/Header/HeaderCart.vue";
     max-width: 1250px;
     padding: 0 15px;
     border-radius: 0 0 25px 25px;
-    background-color: var(--secondary-color);
+    background-color: #1c8551;
+    box-shadow: 0 0 16px 0 #0000007d;
   }
 }
 

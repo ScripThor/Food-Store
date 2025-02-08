@@ -44,7 +44,7 @@ const props = defineProps<Props>();
 
     & span {
       color: var(--primary-text);
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 600;
     }
   }
