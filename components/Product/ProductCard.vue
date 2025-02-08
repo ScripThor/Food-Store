@@ -25,14 +25,14 @@ const props = defineProps<Props>();
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 248px;
+  height: 385px;
   overflow: hidden;
   background-color: var(--secondary-color);
   border-radius: 16px;
   transition: background-color 0.2s ease-in-out;
 
   @include media('>=desktop-mini') {
-    height: 360px;
+    height: 385px;
     border-radius: 25px;
     gap: 20px;
 
