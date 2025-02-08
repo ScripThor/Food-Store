@@ -5,8 +5,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/eslint-module',
     '@nuxtjs/device',
+    '@nuxt/image',
   ],
   css: ["~/assets/css/index.scss"],
+  image: {
+    dir: 'assets/images',
+  },
   vite: {
     css: {
       preprocessorOptions: {
