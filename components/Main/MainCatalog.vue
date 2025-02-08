@@ -6,9 +6,9 @@ import { onMounted, computed } from 'vue';
 const categoriesStore = useCategoriesStore();
 const productsStore = useProductsStore();
 
-onMounted(() => {
+onMounted(async () => {
   categoriesStore.loadCategories();
-  productsStore.loadProducts();
+  await productsStore.loadProducts(); // Загружаем товары из Firestore
 });
 
 const categories = computed(() => categoriesStore.categories);
@@ -20,7 +20,7 @@ const getProductsByCategory = (categorySlug: string) => {
 const filteredCategories = computed(() => {
   return categories.value.filter((category) => {
     const products = getProductsByCategory(category.slug);
-    return products.length > 0; // Оставляем только категории с товарами
+    return products.length > 0;
   });
 });
 </script>
