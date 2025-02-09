@@ -1,8 +1,7 @@
 <script setup lang="ts">
-
-import TheLogo from "@/components/Header/TheLogo.vue";
+import TheLogo from "@/components/TheLogo.vue";
 import HeaderSearch from "@/components/Header/HeaderSearch.vue";
-import HeaderCart from "~/components/Header/HeaderCart.vue";
+import HeaderCart from "@/components/Header/HeaderCart.vue";
 </script>
 
 <template>

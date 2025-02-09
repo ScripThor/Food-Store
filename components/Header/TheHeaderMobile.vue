@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import TheLogo from "@/components/TheLogo.vue";
 
-import TheLogo from "@/components/Header/TheLogo.vue";
 </script>
 
 <template>
