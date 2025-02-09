@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TheBanner from "@/components/Banner/TheBanner.vue";
 import MainCatalog from "@/components/Main/MainCatalog.vue";
+import MainAbout from "@/components/Main/MainAbout.vue";
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import MainCatalog from "@/components/Main/MainCatalog.vue";
   <div>
     <the-banner/>
     <main-catalog/>
+    <main-about/>
   </div>
 </template>
 

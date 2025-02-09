@@ -9,6 +9,19 @@ a {
   text-decoration: none;
 }
 
+h2 mark {
+  margin: 0;
+  padding: 0;
+  color: var(--primary-color);
+  background-color: transparent;
+}
+
+p {
+  color: #2c2f39;
+  line-height: 1.2;
+  font-size: 17px;
+}
+
 button, [type="button"], [type="reset"], [type="submit"] {
   border: 0;
   background: none;
