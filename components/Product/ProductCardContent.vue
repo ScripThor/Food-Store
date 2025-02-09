@@ -9,18 +9,13 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-  <a
-      :href="`/product/${props.product.slug}/`"
-      class="product-card-content"
-  >
+  <a :href="`/product/${props.product.slug}/`" class="product-card-content">
     <div class="product-card-content__header">
       <span class="product-card-content__title">
         {{ props.product.name }}
       </span>
     </div>
-    <div
-        class="product-card-content__text"
-    >
+    <div class="product-card-content__text">
       {{ props.product.description }}
     </div>
   </a>
@@ -52,7 +47,7 @@ const props = defineProps<Props>();
   &__title {
     margin-right: 4px;
     font-size: 14px;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     word-break: break-word;
 
     @include media('>=desktop-mini') {
@@ -70,7 +65,7 @@ const props = defineProps<Props>();
       font-size: 14px;
       font-weight: 600;
       line-height: 18px;
-      color: var(--primery-text--hover);
+      color: var(--secondary-text--hover);
       text-overflow: ellipsis;
       -webkit-line-clamp: 3;
       line-clamp: 3;

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Product } from '@/types/products';
 
-import ProductCardImage from "@/components/Product/ProductCardImage.vue";
-import ProductCardContent from "@/components/Product/ProductCardContent.vue";
-import ProductCardFooter from "@/components/Product/ProductCardFooter.vue";
+import ProductCardImage from '@/components/Product/ProductCardImage.vue';
+import ProductCardContent from '@/components/Product/ProductCardContent.vue';
+import ProductCardFooter from '@/components/Product/ProductCardFooter.vue';
 
 type Props = {
   product: Product; // Продукт передается через пропсы
@@ -27,7 +27,7 @@ const props = defineProps<Props>();
   flex-direction: column;
   height: 385px;
   overflow: hidden;
-  background-color: var(--secondary-color);
+  background-color: var(--grey-color);
   border-radius: 16px;
   transition: background-color 0.2s ease-in-out;
 
@@ -37,9 +37,8 @@ const props = defineProps<Props>();
     gap: 20px;
 
     &:hover {
-      background-color: var(--secondary-color--hover);
+      background-color: var(--grey-color--hover);
     }
   }
 }
-
 </style>
