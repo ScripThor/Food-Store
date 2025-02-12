@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const onScroll = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 </script>
 
 <template>
   <div class="logo">
-    <nuxt-link to="/public" class="logo-link" @click.prevent="onScroll">
+    <nuxt-link to="/" class="logo-link" @click.prevent="onScroll">
       <img src="/assets/logo.png" alt="Sushi Stories" />
     </nuxt-link>
   </div>
