@@ -1,12 +1,10 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="header__info">
     <div class="header__info-block">
       <div class="header__info-icon">
-        <nuxt-img src="/icons/icn-work-time.svg" alt="WhatsUp"/>
+        <img src="/assets/images/icons/icn-work-time.svg" alt="WhatsUp" />
       </div>
       <div class="header__info-item">
         <small>режим работы</small>
@@ -58,7 +56,7 @@
       background-image: url('@/assets/images/icons/slash.svg');
       background-position: 50%;
       background-size: contain;
-      content: "";
+      content: '';
       height: 24px;
       position: absolute;
       right: -22px;
@@ -74,6 +72,5 @@
     font-weight: 700;
     text-decoration: none;
   }
-
 }
 </style>

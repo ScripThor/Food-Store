@@ -7,9 +7,12 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     '@nuxt/image',
   ],
-  css: ["~/assets/css/index.scss"],
+  css: ['~/assets/css/index.scss'],
   image: {
     dir: 'assets/images',
+  },
+  nitro: {
+    preset: 'firebase',
   },
   vite: {
     css: {

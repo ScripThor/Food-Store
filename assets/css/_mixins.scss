@@ -1,5 +1,5 @@
 // Переопределяем $breakpoints для библиотеки include-media и пробрасываем её дальше в глобальные импорты
-@forward 'include-media/dist/_include-media.scss' show media with (
+@forward '../../node_modules/include-media/dist/include-media' show media with (
   $breakpoints: (
     'phone': 320px,
     'portrait-phone': 475px,

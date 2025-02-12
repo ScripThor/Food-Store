@@ -12,10 +12,15 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@firebase/app": "^0.11.1",
+    "@firebase/auth": "^1.9.0",
+    "@firebase/firestore": "^4.7.8",
+    "@firebase/storage": "^0.13.6",
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/device": "^3.2.4",
     "@pinia/nuxt": "^0.9.0",
-    "firebase": "^11.3.0",
+    "firebase": "^11.3.1",
     "include-media": "^2.0.0",
     "nuxt": "^3.15.4",
     "pinia": "^2.3.1",

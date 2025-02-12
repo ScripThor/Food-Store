@@ -11,9 +11,9 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer__copyright">© {{ year }} sushi-gaysha.ru</div>
     <div class="footer__payment">
-      <nuxt-img src="/icons/mir.svg" alt="MirPay" />
-      <nuxt-img src="/icons/visa.svg" alt="Visa" />
-      <nuxt-img src="/icons/mastercard.svg" alt="Mastercard" />
+      <img src="/assets/images/icons/mir.svg" alt="MirPay" />
+      <img src="/assets/images/icons/visa.svg" alt="Visa" />
+      <img src="/assets/images/icons/mastercard.svg" alt="Mastercard" />
     </div>
   </div>
 </template>
