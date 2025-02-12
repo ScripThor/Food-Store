@@ -1,15 +1,27 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="header__contactus">
     <div class="header__contactus-text">Свяжитесь с нами</div>
     <div class="header__contactus-drop">
-      <a href="https://t.me/dreake88" class="header__contactus-social" target="_blank" rel="noopener noreferrer">
-        <nuxt-img src="/icons/icn-telegram_circle.svg" alt="Telegram"/>
+      <a
+        href="https://t.me/dreake88"
+        class="header__contactus-social"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/assets/images/icons/icn-telegram_circle.svg"
+          alt="Telegram"
+        />
       </a>
-      <a href="https://wa.me/+79811114942" class="header__contactus-social" target="_blank" rel="noopener noreferrer">
-        <nuxt-img src="/icons/icn-whatsup__circle.svg" alt="WhatsUp"/>
+      <a
+        href="https://wa.me/+79811114942"
+        class="header__contactus-social"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/assets/images/icons/icn-whatsup__circle.svg" alt="WhatsUp" />
       </a>
     </div>
   </div>
@@ -47,7 +59,9 @@
     padding: 20px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s linear, visibility 0.2s linear;
+    transition:
+      opacity 0.2s linear,
+      visibility 0.2s linear;
 
     & img {
       width: 40px;
