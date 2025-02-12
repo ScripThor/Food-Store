@@ -10,11 +10,10 @@ const props = defineProps<Props>();
 
 <template>
   <div class="product-list">
-    <slot />
     <product-card
-        v-for="product in props.products"
-        :key="product.id"
-        :product="product"
+      v-for="product in props.products"
+      :key="product.id"
+      :product="product"
     />
   </div>
 </template>
