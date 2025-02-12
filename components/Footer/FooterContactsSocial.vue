@@ -8,7 +8,7 @@
       rel="nofollow noopener noreferrer"
       class="footer__social-item"
     >
-      <button class="footer__social-link">
+      <add-to-cart-button class="footer__social-link">
         <span>
           <svg
             stroke="currentColor"
@@ -24,7 +24,7 @@
             ></path>
           </svg>
         </span>
-      </button>
+      </add-to-cart-button>
     </a>
     <a
       target="_blank"
@@ -32,7 +32,7 @@
       rel="nofollow noopener noreferrer"
       class="footer__social-item"
     >
-      <button class="footer__social-link">
+      <add-to-cart-button class="footer__social-link">
         <span>
           <svg
             stroke="currentColor"
@@ -48,7 +48,7 @@
             ></path>
           </svg>
         </span>
-      </button>
+      </add-to-cart-button>
     </a>
     <a
       target="_blank"
@@ -56,7 +56,7 @@
       rel="nofollow noopener noreferrer"
       class="footer__social-item"
     >
-      <button class="footer__social-link">
+      <add-to-cart-button class="footer__social-link">
         <span>
           <svg
             stroke="currentColor"
@@ -72,7 +72,7 @@
             ></path>
           </svg>
         </span>
-      </button>
+      </add-to-cart-button>
     </a>
   </div>
 </template>
