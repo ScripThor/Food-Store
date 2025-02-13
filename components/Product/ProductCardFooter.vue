@@ -11,7 +11,7 @@ const props = defineProps<Props>();
 
 <template>
   <div class="product-card-footer">
-    <add-to-cart-button />
+    <add-to-cart-button :product="props.product" />
     <div class="product-card-footer__price">
       <span>{{ props.product.price }} ₽</span>
     </div>

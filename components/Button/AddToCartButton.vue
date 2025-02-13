@@ -1,7 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCartStore } from '@/stores/useCartStore';
+import type { Product } from '@/types/products';
+
+const cartStore = useCartStore();
+
+type Props = {
+  product: Product;
+  required: true;
+};
+
+const { product } = defineProps<Props>();
+
+const addToCart = () => {
+  cartStore.addToCart(product);
+};
+</script>
 
 <template>
-  <button class="product-card-button">В корзину</button>
+  <button class="product-card-button" @click="addToCart">В корзину</button>
 </template>
 
 <style scoped lang="scss">

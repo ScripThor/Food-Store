@@ -4,7 +4,7 @@ import { useProductsStore } from '@/stores/useProductsStore';
 import type { Product } from '@/types/products';
 
 import AddToCartButton from '@/components/Button/AddToCartButton.vue';
-import ProductLoader from '~/components/Loader/ProductLoader.vue';
+import ProductLoader from '@/components/Loader/ProductLoader.vue';
 
 const route = useRoute();
 const productStore = useProductsStore();
@@ -39,7 +39,7 @@ onMounted(async () => {
           <p>{{ product.composition }}</p>
         </div>
         <div class="product__content-footer">
-          <add-to-cart-button />
+          <add-to-cart-button :product="product" />
           <span>{{ product.price }} руб.</span>
         </div>
       </div>

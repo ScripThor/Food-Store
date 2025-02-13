@@ -1,10 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCartStore } from '@/stores/useCartStore';
+
+const cartStore = useCartStore();
+
+onMounted(() => {
+  cartStore.loadFromLocalStorage(); // Выполняется только на клиентской стороне
+});
+</script>
 
 <template>
   <div class="header__cart">
-    <add-to-cart-button
+    <nuxt-link
       class="header__cart-button"
       type="button"
+      to="/cart/"
       title="Открыть корзину"
     >
       <div class="header__cart-icon">
@@ -33,15 +42,15 @@
       </div>
       <div class="header__cart-info">
         <div class="header__cart-price">
-          <span class="header__cart-count">0</span>
+          <span class="header__cart-count">{{ cartStore.totalPrice }}</span>
           <span class="header__cart-currency">&nbsp;<label>руб.</label> </span>
         </div>
         <div class="header__cart-quantity">
-          <span class="header__cart-count">0</span>
+          <span class="header__cart-count">{{ cartStore.totalQuantity }}</span>
           <span class="header__cart-pieces">шт.</span>
         </div>
       </div>
-    </add-to-cart-button>
+    </nuxt-link>
   </div>
 </template>
 
