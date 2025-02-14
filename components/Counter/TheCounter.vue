@@ -51,7 +51,8 @@ const emit = defineEmits(['increase', 'decrease']);
 
 <style scoped lang="scss">
 .counter {
-  min-width: 85px;
+  min-width: 115px;
+  min-height: 40px;
   background-color: #d6d6d6;
   align-items: center;
   border-radius: 25px;

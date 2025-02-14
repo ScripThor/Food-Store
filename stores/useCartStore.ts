@@ -21,6 +21,7 @@ export const useCartStore = defineStore('cart', {
       this.totalQuantity++;
       this.totalPrice += price;
       this.saveToLocalStorage();
+      return existingItem || this.items[this.items.length - 1];
     },
 
     removeFromCart(productId: string) {
@@ -38,9 +39,11 @@ export const useCartStore = defineStore('cart', {
       const item = this.items.find((item) => item.id === productId);
       if (!item) return;
 
+      const price = Number(item.price);
+
       item.quantity++;
       this.totalQuantity++;
-      this.totalPrice += item.price;
+      this.totalPrice += price;
       this.saveToLocalStorage();
     },
 
@@ -48,9 +51,11 @@ export const useCartStore = defineStore('cart', {
       const item = this.items.find((item) => item.id === productId);
       if (!item) return;
 
+      const price = Number(item.price);
+
       item.quantity--;
       this.totalQuantity--;
-      this.totalPrice -= item.price;
+      this.totalPrice -= price;
 
       if (item.quantity === 0) {
         this.removeFromCart(productId);
@@ -79,7 +84,7 @@ export const useCartStore = defineStore('cart', {
       const { items, totalQuantity, totalPrice } = JSON.parse(data);
       this.items = items.map((item) => ({
         ...item,
-        price: Number(item.price), // Убедимся, что цена в виде числа
+        price: Number(item.price),
       }));
       this.totalQuantity = totalQuantity;
       this.totalPrice = totalPrice;
