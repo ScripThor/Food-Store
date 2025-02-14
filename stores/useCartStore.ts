@@ -10,66 +10,79 @@ export const useCartStore = defineStore('cart', {
   actions: {
     addToCart(product: Product) {
       const existingItem = this.items.find((item) => item.id === product.id);
+      const price = Number(product.price);
 
       if (existingItem) {
-        existingItem.quantity = (existingItem.quantity || 1) + 1;
+        existingItem.quantity++;
       } else {
         this.items.push({ ...product, quantity: 1 });
       }
 
-      // Преобразуем цену в число перед обновлением totalPrice
-      const price = Number(product.price);
-      if (!isNaN(price)) {
-        this.totalQuantity += 1;
-        this.totalPrice += price;
-      } else {
-        console.error('Цена товара не является числом:', product.price);
-      }
-
+      this.totalQuantity++;
+      this.totalPrice += price;
       this.saveToLocalStorage();
     },
 
-    // Удаление товара из корзины
     removeFromCart(productId: string) {
       const itemIndex = this.items.findIndex((item) => item.id === productId);
-      if (itemIndex !== -1) {
-        const item = this.items[itemIndex];
-        this.totalQuantity -= item.quantity || 1;
-        this.totalPrice -= (item.quantity || 1) * (item.price || 0);
-        this.items.splice(itemIndex, 1);
-        this.saveToLocalStorage();
-      }
+      if (itemIndex === -1) return;
 
+      const item = this.items[itemIndex];
+      this.totalQuantity -= item.quantity;
+      this.totalPrice -= item.price * item.quantity;
+      this.items.splice(itemIndex, 1);
       this.saveToLocalStorage();
     },
 
-    // Сохранение состояния в Local Storage
+    incrementQuantity(productId: string) {
+      const item = this.items.find((item) => item.id === productId);
+      if (!item) return;
+
+      item.quantity++;
+      this.totalQuantity++;
+      this.totalPrice += item.price;
+      this.saveToLocalStorage();
+    },
+
+    decrementQuantity(productId: string) {
+      const item = this.items.find((item) => item.id === productId);
+      if (!item) return;
+
+      item.quantity--;
+      this.totalQuantity--;
+      this.totalPrice -= item.price;
+
+      if (item.quantity === 0) {
+        this.removeFromCart(productId);
+      } else {
+        this.saveToLocalStorage();
+      }
+    },
+
     saveToLocalStorage() {
-      if (typeof window !== 'undefined') {
-        // Проверяем, что мы в браузере
-        const cartData = {
+      if (typeof window === 'undefined') return;
+      localStorage.setItem(
+        'cart',
+        JSON.stringify({
           items: this.items,
           totalQuantity: this.totalQuantity,
           totalPrice: this.totalPrice,
-        };
-        localStorage.setItem('cart', JSON.stringify(cartData));
-      }
-
-      this.saveToLocalStorage();
+        }),
+      );
     },
 
-    // Загрузка состояния из Local Storage
     loadFromLocalStorage() {
-      if (typeof window !== 'undefined') {
-        // Проверяем, что мы в браузере
-        const cartData = localStorage.getItem('cart');
-        if (cartData) {
-          const parsedData = JSON.parse(cartData);
-          this.items = parsedData.items || [];
-          this.totalQuantity = parsedData.totalQuantity || 0;
-          this.totalPrice = parsedData.totalPrice || 0;
-        }
-      }
+      if (typeof window === 'undefined') return;
+      const data = localStorage.getItem('cart');
+      if (!data) return;
+
+      const { items, totalQuantity, totalPrice } = JSON.parse(data);
+      this.items = items.map((item) => ({
+        ...item,
+        price: Number(item.price), // Убедимся, что цена в виде числа
+      }));
+      this.totalQuantity = totalQuantity;
+      this.totalPrice = totalPrice;
     },
   },
 });

@@ -2,6 +2,7 @@
 import { useCartStore } from '@/stores/useCartStore';
 import CartLoader from '@/components/Loader/CartLoader.vue';
 import TheCounter from '@/components/Counter/TheCounter.vue';
+import type { Product } from '@/types/products';
 
 const cartStore = useCartStore();
 const isLoading = ref(true);
@@ -11,14 +12,12 @@ onMounted(async () => {
   isLoading.value = false;
 });
 
-const increaseQuantity = (item) => {
-  item.quantity++;
+const increaseQuantity = (item: Product) => {
+  cartStore.incrementQuantity(item.id);
 };
 
-const decreaseQuantity = (item) => {
-  if (item.quantity > 0) {
-    item.quantity--;
-  }
+const decreaseQuantity = (item: Product) => {
+  cartStore.decrementQuantity(item.id);
 };
 </script>
 
