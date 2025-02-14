@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AddToCartButton from '~/components/Button/AddToCartButton.vue';
+import AddToCartButton from '@/components/Button/AddToCartButton.vue';
 </script>
 
 <template>

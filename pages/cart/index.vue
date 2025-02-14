@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/useCartStore';
-import CartLoader from '~/components/Loader/CartLoader.vue';
+import CartLoader from '@/components/Loader/CartLoader.vue';
+import TheCounter from '@/components/Counter/TheCounter.vue';
 
 const cartStore = useCartStore();
 const isLoading = ref(true);
@@ -9,6 +10,16 @@ onMounted(async () => {
   cartStore.loadFromLocalStorage();
   isLoading.value = false;
 });
+
+const increaseQuantity = (item) => {
+  item.quantity++;
+};
+
+const decreaseQuantity = (item) => {
+  if (item.quantity > 0) {
+    item.quantity--;
+  }
+};
 </script>
 
 <template>
@@ -37,9 +48,13 @@ onMounted(async () => {
             <h3 class="order-page__product-name">{{ item.name }}</h3>
             <div class="order-page__product-info">
               <p class="order-page__product-price">{{ item.price }} руб.</p>
-              <p class="order-page__product-quantity">
-                Количество: {{ item.quantity }}
-              </p>
+              <div class="order-page__product-quantity">
+                <the-counter
+                  :value="item.quantity"
+                  @increase="increaseQuantity(item)"
+                  @decrease="decreaseQuantity(item)"
+                />
+              </div>
               <button
                 class="remove-button"
                 @click="cartStore.removeFromCart(item.id)"
@@ -112,7 +127,7 @@ onMounted(async () => {
       }
 
       &-price {
-        font-size: 16px;
+        font-size: 20px;
         margin: 5px;
         color: #000;
         font-weight: 600;
