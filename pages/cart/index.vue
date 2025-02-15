@@ -19,6 +19,14 @@ const increaseQuantity = (item: Product) => {
 const decreaseQuantity = (item: Product) => {
   cartStore.decrementQuantity(item.id);
 };
+
+const totalItemPrice = (item: Product) => {
+  return item.price * item.quantity;
+};
+
+const totalItemWeight = (item: Product) => {
+  return item.weight * item.quantity;
+};
 </script>
 
 <template>
@@ -44,9 +52,16 @@ const decreaseQuantity = (item: Product) => {
             class="order-page__product-image"
           />
           <div class="order-page__product-details">
-            <h3 class="order-page__product-name">{{ item.name }}</h3>
+            <div class="order-page__product-main">
+              <h3 class="order-page__product-name">{{ item.name }}</h3>
+              <span class="order-page__product-weight"
+                >{{ totalItemWeight(item) }} г.</span
+              >
+            </div>
             <div class="order-page__product-info">
-              <p class="order-page__product-price">{{ item.price }} руб.</p>
+              <p class="order-page__product-price">
+                {{ totalItemPrice(item) }} руб.
+              </p>
               <div class="order-page__product-quantity">
                 <the-counter
                   :value="item.quantity"
@@ -113,10 +128,21 @@ const decreaseQuantity = (item: Product) => {
         justify-content: space-between;
       }
 
+      &-main {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
       &-name {
         font-size: 18px;
         font-weight: bold;
         color: var(--secondary-text);
+      }
+
+      &-weight {
+        color: #9f9f9f;
+        font-weight: 600;
       }
 
       &-info {
