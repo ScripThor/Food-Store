@@ -6,8 +6,9 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxtjs/device',
     '@nuxt/image',
+    '@vueuse/nuxt',
   ],
-  css: ['~/assets/css/index.scss'],
+  css: ['@/assets/css/index.scss'],
   image: {
     dir: 'assets/images',
   },
