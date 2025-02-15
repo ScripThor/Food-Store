@@ -66,6 +66,7 @@ const decreaseQuantity = () => {
 <template>
   <product-loader v-if="isLoading" />
   <div v-else-if="product" class="product-page container">
+    <product-card-breadcrumbs v-if="product" :product="product" />
     <div class="product">
       <div class="product__image">
         <img :src="product.image" :alt="product.name" />
