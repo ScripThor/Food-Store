@@ -3,7 +3,7 @@ import { useCartStore } from '@/stores/useCartStore';
 import CartLoader from '@/components/Loader/CartLoader.vue';
 import TheCounter from '@/components/Counter/TheCounter.vue';
 import type { Product } from '@/types/products';
-import BaseButton from '~/components/Button/BaseButton.vue';
+import BaseButton from '@/components/Button/BaseButton.vue';
 
 const cartStore = useCartStore();
 const isLoading = ref(true);
