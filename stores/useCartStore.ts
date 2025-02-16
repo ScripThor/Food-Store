@@ -35,6 +35,13 @@ export const useCartStore = defineStore('cart', {
       this.saveToLocalStorage();
     },
 
+    clearCart() {
+      this.items = [];
+      this.totalQuantity = 0;
+      this.totalPrice = 0;
+      this.saveToLocalStorage();
+    },
+
     incrementQuantity(productId: string) {
       const item = this.items.find((item) => item.id === productId);
       if (!item) return;

@@ -8,6 +8,6 @@ export interface Product {
   name: string;
   price: number;
   composition: string;
-  weight: string;
+  weight: number;
   quantity: number;
 }

@@ -3,9 +3,11 @@ import { useCartStore } from '@/stores/useCartStore';
 import CartLoader from '@/components/Loader/CartLoader.vue';
 import TheCounter from '@/components/Counter/TheCounter.vue';
 import type { Product } from '@/types/products';
+import BaseButton from '~/components/Button/BaseButton.vue';
 
 const cartStore = useCartStore();
 const isLoading = ref(true);
+const isSuccess = ref(false);
 
 onMounted(async () => {
   cartStore.loadFromLocalStorage();
@@ -27,6 +29,16 @@ const totalItemPrice = (item: Product) => {
 const totalItemWeight = (item: Product) => {
   return item.weight * item.quantity;
 };
+
+const handleCheckout = () => {
+  isLoading.value = true;
+
+  setTimeout(() => {
+    cartStore.clearCart();
+    isLoading.value = false;
+    isSuccess.value = true;
+  }, 2000);
+};
 </script>
 
 <template>
@@ -36,52 +48,64 @@ const totalItemWeight = (item: Product) => {
 
       <cart-loader v-if="isLoading" />
 
-      <div v-else-if="cartStore.items.length === 0" class="order-page__empty">
+      <div
+        v-else-if="cartStore.items.length === 0 && isSuccess == false"
+        class="order-page__empty"
+      >
         <p>Ваша корзина пуста.</p>
       </div>
 
       <div v-else class="order-page">
-        <div
-          v-for="item in cartStore.items"
-          :key="item.id"
-          class="order-page__product"
-        >
-          <img
-            :src="item.image"
-            :alt="item.name"
-            class="order-page__product-image"
-          />
-          <div class="order-page__product-details">
-            <div class="order-page__product-main">
-              <h3 class="order-page__product-name">{{ item.name }}</h3>
-              <span class="order-page__product-weight"
-                >{{ totalItemWeight(item) }} г.</span
-              >
-            </div>
-            <div class="order-page__product-info">
-              <p class="order-page__product-price">
-                {{ totalItemPrice(item) }} руб.
-              </p>
-              <div class="order-page__product-quantity">
-                <the-counter
-                  :value="item.quantity"
-                  @increase="increaseQuantity(item)"
-                  @decrease="decreaseQuantity(item)"
-                />
+        <div v-if="!isSuccess">
+          <div
+            v-for="item in cartStore.items"
+            :key="item.id"
+            class="order-page__product"
+          >
+            <img
+              :src="item.image"
+              :alt="item.name"
+              class="order-page__product-image"
+            />
+            <div class="order-page__product-details">
+              <div class="order-page__product-main">
+                <h3 class="order-page__product-name">{{ item.name }}</h3>
+                <span class="order-page__product-weight"
+                  >{{ totalItemWeight(item) }} г.</span
+                >
               </div>
-              <button
-                class="remove-button"
-                @click="cartStore.removeFromCart(item.id)"
-              >
-                Удалить
-              </button>
+              <div class="order-page__product-info">
+                <p class="order-page__product-price">
+                  {{ totalItemPrice(item) }} руб.
+                </p>
+                <div class="order-page__product-quantity">
+                  <the-counter
+                    :value="item.quantity"
+                    @increase="increaseQuantity(item)"
+                    @decrease="decreaseQuantity(item)"
+                  />
+                </div>
+                <button
+                  class="remove-button"
+                  @click="cartStore.removeFromCart(item.id)"
+                >
+                  Удалить
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="order-page__footer">
+            <div class="order-page__footer-submit">
+              <base-button @click="handleCheckout">Оформить</base-button>
+            </div>
+            <div class="order-page__footer-summary">
+              <p>Общее количество: {{ cartStore.totalQuantity }} шт.</p>
+              <p>Общая стоимость: {{ cartStore.totalPrice }} руб.</p>
             </div>
           </div>
         </div>
-
-        <div class="order-summary">
-          <p>Общее количество: {{ cartStore.totalQuantity }} шт.</p>
-          <p>Общая стоимость: {{ cartStore.totalPrice }} руб.</p>
+        <div v-else class="order-page__success">
+          Спасибо за Ваш заказ! Наша кухня уже начала для Вас готовить
         </div>
       </div>
     </div>
@@ -164,10 +188,31 @@ const totalItemWeight = (item: Product) => {
       }
     }
 
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+
+      &-summary {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+
     &__empty {
       text-align: center;
       font-size: 18px;
       color: gray;
+    }
+
+    &__success {
+      color: var(--primary-color);
+      padding: 50px 10px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
     }
 
     .order-page__products {
@@ -178,15 +223,7 @@ const totalItemWeight = (item: Product) => {
   }
 }
 
-.order-summary {
-  margin-right: 50px;
-  margin-top: 20px;
-  font-size: 25px;
-  font-weight: bold;
-  text-align: right;
-}
-
-.remove-button {
+.order .remove-button {
   background-color: red;
   color: white;
   padding: 5px 10px;

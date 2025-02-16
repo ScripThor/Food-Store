@@ -4,7 +4,7 @@ import { useCartStore } from '@/stores/useCartStore';
 const cartStore = useCartStore();
 
 onMounted(() => {
-  cartStore.loadFromLocalStorage(); // Выполняется только на клиентской стороне
+  cartStore.loadFromLocalStorage();
 });
 </script>
 
